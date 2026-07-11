@@ -1,5 +1,6 @@
 import express from 'express';
 import  authRoutes from './routes/auth/auth_routes.js'
+import researchRoutes from './routes/research/research_routes.js'
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -20,4 +21,5 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/research", researchRoutes);
 export default app;
