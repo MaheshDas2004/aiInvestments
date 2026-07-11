@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import pool from "../../config/db.js";
-import generateToken from "../../utils/jwt.js";
+import { generateToken } from "../../utils/jwt.js";
 
 const loginUser = async ({ email, password }) => {
 

@@ -6,4 +6,10 @@ const generateToken = (payload) => {
     });
 };
 
-export default generateToken;
+const verifyToken = (token) => {
+    return jwt.verify(token, process.env.JWT_SECRET);
+};
+
+export { generateToken, verifyToken };
+
+export default { generateToken, verifyToken };
