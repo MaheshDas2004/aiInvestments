@@ -1,4 +1,5 @@
 import { bullChain, bearChain, judgeChain } from "../../ai/chains/debate_chain.js";
+import { memoChain } from "../../ai/chains/memo_chain.js";
 import {
   searchCompany,
   getFinancialData,
@@ -47,11 +48,31 @@ const judge = await judgeChain.invoke({
   bear: JSON.stringify(bear),
 });
 
+const memo = await memoChain.invoke({
+  company: companyName,
+
+  financials: JSON.stringify({
+    companyName: financialData.profile.companyName,
+    sector: financialData.profile.sector,
+    marketCap: financialData.profile.marketCap,
+    revenue: financialData.income.revenue,
+    netIncome: financialData.income.netIncome,
+    eps: financialData.income.eps,
+    currentRatio: financialData.metrics.currentRatio,
+    returnOnEquity: financialData.metrics.returnOnEquity,
+  }),
+
+  judge: JSON.stringify(judge),
+});
+
+console.log("Memo:", memo);
+
 console.log("Judge:", judge);
 
 return {
   bull,
   bear,
   judge,
+  memo,
 };
 };
