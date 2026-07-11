@@ -1,17 +1,15 @@
-import { structuredLLM } from "../../ai/chain.js";
-import { investmentPrompt } from "../../ai/prompts.js";
+import { bullChain, bearChain, judgeChain } from "../../ai/chains/debate_chain.js";
 import {
   searchCompany,
   getFinancialData,
 } from "./financial_service.js";
 
 export const generateResearchService = async (companyName) => {
-
   const symbol = await searchCompany(companyName);
 
   const financialData = await getFinancialData(symbol);
 
-  const prompt = await investmentPrompt.format({
+  const input = {
     company: companyName,
 
     profile: JSON.stringify({
@@ -34,9 +32,26 @@ export const generateResearchService = async (companyName) => {
       netIncome: financialData.income.netIncome,
       eps: financialData.income.eps,
     }),
-  });
+  };
 
-  const result = await structuredLLM.invoke(prompt);
+ const [bull, bear] = await Promise.all([
+  bullChain.invoke(input),
+  bearChain.invoke(input),
+]);
 
-  return result;
+console.log("Bull:", bull);
+console.log("Bear:", bear);
+
+const judge = await judgeChain.invoke({
+  bull: JSON.stringify(bull),
+  bear: JSON.stringify(bear),
+});
+
+console.log("Judge:", judge);
+
+return {
+  bull,
+  bear,
+  judge,
+};
 };
