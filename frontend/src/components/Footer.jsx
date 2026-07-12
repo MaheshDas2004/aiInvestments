@@ -3,7 +3,7 @@ import { LineChart } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-white/[0.06] py-2">
+    <footer className="mt-5 p-3 border-t border-white/[0.06] py-2">
       <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center rounded-md bg-amber/15 text-amber">

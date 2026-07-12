@@ -12,8 +12,6 @@ export default function ResearchReport({ data, companyName }) {
   const bear = data.bear || {}
   const judge = data.judge || {}
   const memo = data.memo || {}
-  const score = data.score || {}
-
   return (
     <section className="print-surface relative mx-auto mt-10 max-w-[88rem] space-y-8 overflow-hidden rounded-3xl border border-white/[0.08] bg-ink-900/35 p-5 shadow-card sm:p-7">
       <div className="pointer-events-none absolute left-10 top-16 h-40 w-40 rounded-full bg-amber/10 blur-3xl" />
@@ -40,7 +38,7 @@ export default function ResearchReport({ data, companyName }) {
           confidence={judge.confidence}
         />
         <DebateSection bull={bull} bear={bear} />
-        <ScoreDashboard score={score} />
+        <ScoreDashboard scores={judge.scores} />
         <MemoSection memo={memo} />
         <ReasoningTimeline steps={judge.reasoning} />
       </motion.div>

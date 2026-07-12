@@ -1,6 +1,5 @@
 import { bullChain, bearChain, judgeChain } from "../../ai/chains/debate_chain.js";
 import { memoChain } from "../../ai/chains/memo_chain.js";
-import { scoreChain } from "../../ai/chains/score_chain.js";
 import {
   searchCompany,
   getFinancialData,
@@ -80,22 +79,10 @@ export const generateResearchService = async (companyName) => {
 
   console.log("Memo:", memo);
 
-
-  // Score Breakdown generation
-  const score = await scoreChain.invoke({
-    company: companyName,
-    financials,
-    judge: JSON.stringify(judge),
-  });
-
-  console.log("Score:", score);
-
-
   return {
     bull,
     bear,
     judge,
     memo,
-    score,
   };
 };

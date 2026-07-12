@@ -66,10 +66,6 @@ export default function Report() {
             <ArrowLeft size={16} />
             Back
           </button>
-          <button onClick={handleExportPdf} className="btn-primary">
-            <FileDown size={16} />
-            Export to PDF
-          </button>
         </div>
 
         <div className="report-frame">

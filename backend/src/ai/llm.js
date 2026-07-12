@@ -1,9 +1,9 @@
-import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { ChatGroq } from "@langchain/groq";
 
-const llm = new ChatGoogleGenerativeAI({
-  model: "gemini-3.5-flash",
-  apiKey: process.env.GEMINI_API_KEY,
-  temperature: 0.2,
+const llm = new ChatGroq({
+  apiKey: process.env.GROQ_API_KEY,
+  model: "llama-3.3-70b-versatile",
+  temperature: 0,
 });
 
 export default llm;
