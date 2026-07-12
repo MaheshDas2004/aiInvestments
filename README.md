@@ -1,71 +1,102 @@
-# 📈 InvestIQ AI – Investment Research Agent
+# 📈 InvestIQ AI – AI-Powered Investment Research Agent
 
-## Overview
-
-InvestIQ AI is an AI-powered investment research platform that generates comprehensive equity research reports for publicly traded companies using financial data and Large Language Models (LLMs).
-
-Instead of returning a simple buy or sell recommendation, the system simulates an investment committee workflow:
-
-- Retrieves company financial data
-- Generates a Bull Case (positive investment arguments)
-- Generates a Bear Case (negative investment arguments)
-- Uses an AI Judge to evaluate both perspectives and make the final recommendation
-- Produces an Investment Memo
-- Generates a quantitative Score Breakdown
-- Displays the complete research report through a modern React dashboard.
-
-The goal is to provide users with explainable AI-driven investment analysis rather than a single black-box recommendation.
+An AI-powered multi-agent investment research platform that simulates how an investment committee evaluates publicly traded companies. Instead of providing a simple Buy or Sell recommendation, the system generates Bull and Bear analyses, lets an AI Judge evaluate both perspectives, and produces a structured investment report with an AI score and investment memo.
 
 ---
 
-# Features
+# 🚀 Live Demo
 
-- 🔐 User Authentication (JWT + HTTP-only Cookies)
-- 🔍 Company Search
-- 📊 Live Financial Data
-- 🟢 Bull Investment Analysis
-- 🔴 Bear Investment Analysis
-- ⚖️ AI Judge Decision
-- 📝 Investment Memo
-- 📈 AI Score Breakdown
-- 🎨 Modern Responsive UI
-- ☁️ Full Stack Deployment on Render
+### Live Application
+
+https://aiinvestments-2.onrender.com
+
+### Backend API
+
+https://aiinvestments.onrender.com
+
+### GitHub Repository
+
+https://github.com/MaheshDas2004/aiInvestments
 
 ---
 
-# Tech Stack
+# 📖 Overview
+
+InvestIQ AI helps users analyze publicly traded companies using financial data and Large Language Models (LLMs).
+
+When a user searches for a company, the application:
+
+* Retrieves the latest financial information.
+* Generates a Bull Case (positive investment arguments).
+* Generates a Bear Case (risks and concerns).
+* Uses an AI Judge to compare both analyses.
+* Produces a final investment recommendation.
+* Generates an Investment Memo.
+* Creates a quantitative Score Breakdown.
+* Displays the entire report through a modern interactive dashboard.
+
+The objective is to make AI-generated investment research transparent and explainable instead of producing a black-box recommendation.
+
+---
+
+# ✨ Features
+
+* 🔐 JWT Authentication
+* 🍪 HTTP-only Cookie-based Login
+* 🔍 Company Search
+* 📊 Live Financial Data
+* 🟢 Bull Investment Analysis
+* 🔴 Bear Investment Analysis
+* ⚖️ AI Judge Decision
+* 📈 AI Investment Score
+* 📝 Investment Memo
+* 📊 Financial Score Breakdown
+* 🎨 Modern Responsive UI
+* ☁️ Full Stack Deployment on Render
+
+---
+
+# 🛠 Tech Stack
 
 ## Frontend
 
-- React
-- React Router
-- Tailwind CSS
-- Framer Motion
-- Axios
+* React
+* React Router
+* Tailwind CSS
+* Framer Motion
+* Axios
 
 ## Backend
 
-- Node.js
-- Express.js
-- PostgreSQL
-- JWT Authentication
-- bcrypt
+* Node.js
+* Express.js
+* PostgreSQL
+* JWT Authentication
+* bcrypt
 
 ## AI
 
-- LangChain
-- Groq LLM
-- Zod Structured Outputs
+* LangChain
+* Groq (Llama 3)
+* Prompt Engineering
+* Zod Structured Outputs
+* Multi-Agent Workflow
+
+## Deployment
+
+* Render Static Site
+* Render Web Service
+* Render PostgreSQL
 
 ---
 
-# How to Run
+# ⚙️ How to Run
 
 ## Clone Repository
 
 ```bash
 git clone https://github.com/MaheshDas2004/aiInvestments.git
-cd InvestIQ
+cd aiInvestments
 ```
 
 ---
@@ -77,21 +108,16 @@ cd backend
 npm install
 ```
 
-Create a `.env` file
+Create a `.env` file.
 
 ```env
 PORT=5000
 
 DB_HOST=your_database_host
-
 DB_PORT=5432
-
 DB_USER=your_database_user
-
 DB_PASSWORD=your_database_password
-
 DB_NAME=your_database_name
-
 
 JWT_SECRET=your_secret
 
@@ -104,7 +130,7 @@ CLIENT_URL=http://localhost:5173
 NODE_ENV=development
 ```
 
-Run backend
+Run Backend
 
 ```bash
 npm run dev
@@ -116,6 +142,7 @@ npm run dev
 
 ```bash
 cd frontend
+
 npm install
 ```
 
@@ -125,7 +152,7 @@ Create a `.env`
 VITE_API_BASE_URL=http://localhost:5000/api
 ```
 
-Run frontend
+Run Frontend
 
 ```bash
 npm run dev
@@ -133,7 +160,7 @@ npm run dev
 
 ---
 
-# How it Works
+# 🧠 How It Works
 
 ## Overall Workflow
 
@@ -146,13 +173,17 @@ Search Company
 
 ↓
 
-Financial Data API
+Resolve Stock Symbol
 
 ↓
 
-Bull Analysis
+Fetch Financial Data
+
+↓
+
+Bull Analyst
         +
-Bear Analysis
+Bear Analyst
 
 ↓
 
@@ -171,145 +202,190 @@ Score Breakdown
 React Dashboard
 ```
 
-## AI Architecture
+---
 
-The project follows a multi-agent architecture.
+## AI Workflow
 
-### Bull Analyst
+The application follows a multi-agent architecture.
 
-Generates positive investment arguments based on company financials.
+### Step 1 – Financial Data
 
-### Bear Analyst
+The backend searches the company and fetches financial information such as:
 
-Generates risks, weaknesses and valuation concerns.
-
-### Judge
-
-Acts as an investment committee.
-
-It compares Bull vs Bear arguments and produces:
-
-- Final Recommendation
-- Confidence Score
-- AI Score
-- Reasoning
-- Financial Scores
-
-### Investment Memo
-
-Creates an executive summary suitable for investors.
+* Revenue
+* Net Income
+* EPS
+* Market Capitalization
+* Return on Equity
+* Current Ratio
+* Enterprise Value
 
 ---
 
-# Architecture
+### Step 2 – Bull Analyst
+
+The Bull agent analyzes the financial data and generates positive investment arguments explaining why the company could be a good investment.
+
+---
+
+### Step 3 – Bear Analyst
+
+The Bear agent independently analyzes the same financial data and generates risks, weaknesses, valuation concerns, and potential downside.
+
+---
+
+### Step 4 – AI Judge
+
+The Judge compares both analyses and acts as an investment committee.
+
+It generates:
+
+* Final Recommendation
+* Confidence Score
+* AI Score
+* Financial Scores
+* Reasoning
+
+---
+
+### Step 5 – Investment Memo
+
+Finally, an Investment Memo summarizes:
+
+* Investment Thesis
+* Company Strengths
+* Key Risks
+* Long-Term Outlook
+
+The complete report is then displayed on the frontend.
+
+---
+
+# 🏗 Architecture
 
 ```
 React Frontend
 
-↓
+        │
 
-Express API
+        ▼
 
-↓
+Express Backend
+
+        │
+
+        ▼
 
 Research Service
 
-↓
+        │
 
-Financial API
+        ▼
 
-↓
+Financial Data API
+
+        │
+
+        ▼
 
 Bull Chain
 
-↓
+        │
 
 Bear Chain
 
-↓
+        │
+
+        ▼
 
 Judge Chain
 
-↓
+        │
 
-Memo Generation
+        ▼
 
-↓
+Investment Memo
 
-Response to Frontend
+        │
+
+        ▼
+
+React Dashboard
 ```
 
 ---
 
-# Key Decisions & Trade-offs
+# ⚖️ Key Decisions & Trade-offs
 
-## Decisions
+## Design Decisions
 
-- Used LangChain to organize independent AI chains.
-- Used structured JSON outputs with Zod validation.
-- Bull and Bear analyses run in parallel using Promise.all() to reduce response time.
-- Judge acts as an independent investment committee rather than relying on a single AI response.
-- Used HTTP-only cookies for authentication.
+* Used LangChain to organize multiple AI chains.
+* Implemented Bull and Bear agents independently.
+* Used Promise.all() to execute Bull and Bear analyses in parallel for better performance.
+* The Judge makes the final decision after evaluating both sides.
+* Structured outputs are validated using Zod.
+* JWT Authentication is implemented using HTTP-only cookies.
 
 ## Trade-offs
 
-Due to time constraints, the following features were not implemented:
+Due to project scope and time constraints, the following features were not implemented:
 
-- Research history storage
-- Watchlists
-- Portfolio management
-- PDF report export
-- Interactive stock charts
-- Annual report RAG
-- Financial caching layer
-
----
-
-# Example Runs
-
-## Tesla
-
-Recommendation
-
-```
-Hold
-```
-
-AI Score
-
-```
-55
-```
-
-Reason
-
-- Strong liquidity
-- Premium valuation
-- Weak ROE
-- Long-term growth potential
+* Research History
+* Portfolio Tracking
+* Watchlists
+* PDF Export
+* Stock Price Charts
+* RAG using Annual Reports
+* Financial API Caching
+* Real-time Market Data Streaming
 
 ---
+
+# 📊 Example Runs
 
 ## NVIDIA
 
 Recommendation
 
-```
-Invest
-```
+**Invest**
 
 AI Score
 
-```
-85
-```
+**85**
 
-Reason
+Confidence
 
-- Excellent profitability
-- Strong liquidity
-- Market leader in AI hardware
-- Healthy financial performance
+**80%**
+
+Summary
+
+* Strong profitability
+* Excellent liquidity
+* AI market leader
+* Strong long-term growth potential
+
+---
+
+## Tesla
+
+Recommendation
+
+**Hold**
+
+AI Score
+
+**55**
+
+Confidence
+
+**75%**
+
+Summary
+
+* Strong liquidity
+* Premium valuation
+* Weak Return on Equity
+* Long-term EV opportunity
 
 ---
 
@@ -317,78 +393,88 @@ Reason
 
 Recommendation
 
-```
-Invest
-```
+**Invest**
 
 AI Score
 
-```
-82
-```
+**82**
 
-Reason
+Confidence
 
-- Strong recurring revenue
-- Cloud leadership
-- Consistent profitability
-- Stable balance sheet
+**78%**
 
----
+Summary
 
-# What I Would Improve With More Time
-
-If additional development time were available, I would implement:
-
-- Research History
-- Company Watchlists
-- Portfolio Tracking
-- PDF Export
-- Interactive Stock Charts
-- AI Chat with Generated Research
-- Annual Report RAG
-- Better Financial Ratios
-- Discounted Cash Flow (DCF) Valuation
-- Background Job Queue
-- Financial API Response Caching
+* Strong recurring revenue
+* Cloud leadership
+* Stable profitability
+* Healthy balance sheet
 
 ---
 
-# AI Development Process
+# 🚀 What I Would Improve With More Time
 
-This project was developed with assistance from modern Large Language Models.
+If given more development time, I would add:
 
-AI was primarily used for:
-
-- Brainstorming system architecture
-- Prompt engineering
-- LangChain workflow design
-- UI refinement
-- Debugging deployment issues
-- Code review
-- Improving reasoning quality
-
-Final implementation decisions, architecture, integration, debugging, and testing were performed manually.
-
----
-
-# Deployment
-
-Frontend:
-- Render Static Site
-
-Backend:
-- Render Web Service
-
-Database:
-- Render PostgreSQL
+* Research History
+* Portfolio Tracking
+* Company Watchlists
+* Interactive Stock Charts
+* PDF Report Export
+* Annual Report RAG
+* AI Chat with Generated Research
+* More Financial Ratios
+* Discounted Cash Flow (DCF) Valuation
+* Background Job Processing
+* Financial API Caching
 
 ---
 
-# Author
+# 🤖 AI Development Process
+
+This project was developed with assistance from modern Large Language Models (LLMs).
+
+AI tools were used to:
+
+* Brainstorm the overall system architecture.
+* Design the multi-agent workflow.
+* Refine prompt engineering.
+* Improve LangChain implementation.
+* Review code structure.
+* Debug backend issues.
+* Resolve deployment and authentication problems.
+* Improve frontend design and user experience.
+
+The final architecture, implementation, debugging, testing, deployment, and integration were completed manually.
+
+---
+
+# ☁️ Deployment
+
+| Component | Platform           |
+| --------- | ------------------ |
+| Frontend  | Render Static Site |
+| Backend   | Render Web Service |
+| Database  | Render PostgreSQL  |
+
+## Live URLs
+
+Frontend
+
+https://aiinvestments-2.onrender.com
+
+Backend
+
+https://aiinvestments.onrender.com
+
+---
+
+# 👨‍💻 Author
 
 **Mahesh Das**
 
-B.Tech Computer Science Engineering
+B.Tech – Computer Science & Engineering
 
 Lovely Professional University
+
+GitHub: https://github.com/MaheshDas2004
