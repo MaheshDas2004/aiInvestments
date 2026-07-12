@@ -8,16 +8,18 @@ const router = express.Router();
 router.post("/register",validateRegister, register);
 router.post("/login",validateLogin,login);
 router.post("/logout", (req, res) => {
-	res.clearCookie("token", {
-		httpOnly: true,
-		secure: process.env.NODE_ENV === "production",
-		sameSite: "lax",
-	});
+  const isProduction = process.env.NODE_ENV === "production";
 
-	return res.status(200).json({
-		success: true,
-		message: "Logout successful",
-	});
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+  });
+
+  return res.status(200).json({
+    success: true,
+    message: "Logout successful",
+  });
 });
 
 router.get("/me", authenticate, (req, res) => {
